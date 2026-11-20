@@ -170,6 +170,7 @@ def _build_catalog_keyboard() -> InlineKeyboardMarkup:
           [InlineKeyboardButton(text="💣 Снос TG канала или бота — 200$", callback_data="srv_Снос_TG_канала_или_бота_200", style="primary")],
           [InlineKeyboardButton(text="🌐 Снос сайта — 300$", callback_data="srv_Снос_сайта_300", style="danger")],
           [InlineKeyboardButton(text="🛠 Особый заказ — Рассчитать стоимость", callback_data="srv_special_order", style="primary")],
+          [InlineKeyboardButton(text="📖 О услугах", url="https://telegra.ph/Podrobnyj-gajd-po-uslugam-i-oformleniyu-zakaza-11-20-2")],
           [InlineKeyboardButton(text="⬅️ Назад", callback_data="back_home", style="danger")],
       ]
   )
