@@ -166,6 +166,7 @@ def _build_catalog_keyboard() -> InlineKeyboardMarkup:
           [InlineKeyboardButton(text="⚡️ DDos-атака сайта — 70$", callback_data="srv_DDos-атака_сайта_70", style="danger")],
           [InlineKeyboardButton(text="📸 Взлом Instagram — 100$", callback_data="srv_Взлом_Instagram_100", style="primary")],
           [InlineKeyboardButton(text="💬 Взлом Telegram аккаунта — 120$", callback_data="srv_Взлом_Telegram_аккаунта_120", style="danger")],
+          [InlineKeyboardButton(text="🪪 Слив базы сайта — 160$", callback_data="srv_Слив_базы_сайта_160", style="danger")],
           [InlineKeyboardButton(text="💣 Снос TG канала или бота — 200$", callback_data="srv_Снос_TG_канала_или_бота_200", style="primary")],
           [InlineKeyboardButton(text="🌐 Снос сайта — 300$", callback_data="srv_Снос_сайта_300", style="danger")],
           [InlineKeyboardButton(text="🛠 Особый заказ — Рассчитать стоимость", callback_data="srv_special_order", style="primary")],
@@ -995,7 +996,7 @@ async def process_service(callback: CallbackQuery, state: FSMContext):
   await state.update_data(service_name=service_name, total_price=price)
   await state.set_state(OrderForm.target_username)
 
-  link_services = ["снос сайта", "снос tg канала или бота", "ddos-атака сайта"]
+  link_services = ["снос сайта", "снос tg канала или бота", "ddos-атака сайта", "слив базы сайта"]
   if service_name.lower() in link_services:
     target_prompt = "Введите ссылку на ресурс цели следующим сообщением:"
   else:
