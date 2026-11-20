@@ -1091,7 +1091,12 @@ async def process_go_to_payment(callback: CallbackQuery, state: FSMContext):
       "⏳ <b>Оплата заказа</b>\n"
       "Время на завершение: <b><u>20:00</u></b>\n\n"
       f"💳 <b>Выберите способ оплаты</b>\n"
-      f"К оплате: <b>{_format_price(total_price)} USDT</b>"
+      f"К оплате: <b>{_format_price(total_price)} USDT</b>\n\n"
+      "📖 <b>Мини-гайд: как быстро и безопасно оплатить через CryptoBot</b>\n"
+      "1. Зайдите в @CryptoBot и откройте <b>P2P Маркет</b>\n"
+      "2. Пополните баланс <b>USDT</b> в любой удобной валюте вашей страны\n"
+      "3. Вернитесь в нашего бота и нажмите <b>«Оплата через CryptoBot»</b>\n"
+      "4. Нажмите <b>«Оплатить счет»</b> и подтвердите платеж — готово ✅"
   )
   await render_step(callback, state, "payment.jpg", payment_text, _build_payment_keyboard())
 
