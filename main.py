@@ -1,8 +1,8 @@
 import asyncio
 import datetime
-import logging 
+import logging
 import os
-import random   
+import random
 import re
 import sqlite3
 from aiogram import Bot, Dispatcher, F, Router
@@ -161,11 +161,11 @@ def _format_price(amount: float | int) -> str:
 def _build_catalog_keyboard() -> InlineKeyboardMarkup:
   return InlineKeyboardMarkup(
       inline_keyboard=[
-          [InlineKeyboardButton(text="🔍 Доксинг — 20$", callback_data="srv_Доксинг_20", style="primary")],
-          [InlineKeyboardButton(text="💣 Снос Telegram аккаунта — 40$", callback_data="srv_Снос_Telegram_аккаунта_40", style="danger")],
-          [InlineKeyboardButton(text="⚡️ DDos-атака сайта — 60$", callback_data="srv_DDos-атака_сайта_60", style="danger")],
-          [InlineKeyboardButton(text="📸 Взлом Instagram — 80$", callback_data="srv_Взлом_Instagram_80", style="primary")],
-          [InlineKeyboardButton(text="💬 Взлом Telegram аккаунта — 100$", callback_data="srv_Взлом_Telegram_аккаунта_100", style="danger")],
+          [InlineKeyboardButton(text="🔍 Доксинг — 30$", callback_data="srv_Доксинг_30", style="primary")],
+          [InlineKeyboardButton(text="💣 Снос Telegram аккаунта — 50$", callback_data="srv_Снос_Telegram_аккаунта_50", style="danger")],
+          [InlineKeyboardButton(text="⚡️ DDos-атака сайта — 70$", callback_data="srv_DDos-атака_сайта_70", style="danger")],
+          [InlineKeyboardButton(text="📸 Взлом Instagram — 100$", callback_data="srv_Взлом_Instagram_100", style="primary")],
+          [InlineKeyboardButton(text="💬 Взлом Telegram аккаунта — 120$", callback_data="srv_Взлом_Telegram_аккаунта_120", style="danger")],
           [InlineKeyboardButton(text="💣 Снос TG канала или бота — 200$", callback_data="srv_Снос_TG_канала_или_бота_200", style="primary")],
           [InlineKeyboardButton(text="🌐 Снос сайта — 300$", callback_data="srv_Снос_сайта_300", style="danger")],
           [InlineKeyboardButton(text="🛠 Особый заказ — Рассчитать стоимость", callback_data="srv_special_order", style="primary")],
