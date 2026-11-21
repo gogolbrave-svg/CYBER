@@ -2,7 +2,7 @@ import asyncio
 import datetime
 import logging
 import os
-import random 
+import random
 import re
 import sqlite3
 from aiogram import Bot, Dispatcher, F, Router
@@ -734,7 +734,8 @@ def _find_matching_wallets(net_key: str):
   for wallet in CRYPTO_WALLETS:
     w_net = _normalize_network(wallet["network"])
     w_asset = wallet["asset"].upper()
-    if w_net == target_net and w_asset == target_asset:
+    matched = (w_net == target_net and w_asset == target_asset) or (net_key == "ton" and w_net == "ton")
+    if matched:
       if wallet["frozen_until"] and wallet["frozen_until"] > now:
         continue
       if wallet["frozen_until"] and wallet["frozen_until"] <= now:
@@ -1109,6 +1110,8 @@ async def cmd_clear_cache(message: Message):
 
 def _parse_wallet_args(raw: str):
   parts = raw.strip().split()
+  if len(parts) == 2 and parts[1].upper() == "TON":
+    return parts[0], "TON", "TON"
   if len(parts) < 3:
     return None
   address = parts[0]
@@ -1132,6 +1135,7 @@ async def cmd_add_requisites(message: Message):
   if len(args) < 2:
     await message.reply(
         "❌ Использование:\n"
+        "• TON: `/add UQDwk7PZoWr0zHv-BItBEGxnq4uyj81z6BlIw74heDgF-Shd TON`\n"
         "• Крипта: `/add TYd1ekJgTHnFfgAVYXsi7689GaG5oZN3Xe USDT TRC-20`\n"
         "• Карта/СБП: `/add +79990001122 ОзонБанк Россия`",
         parse_mode="Markdown",
@@ -1774,7 +1778,7 @@ async def process_pay_currency(callback: CallbackQuery, state: FSMContext):
   if not card:
     text = (
         f"❌ <b>Реквизиты временно недоступны</b>\n\n"
-        f"Сейчас реквизиты для оплаты в <b>{config['name']}</b> временно недоступны, мы решаем эту проблему. "
+        f"Сейчас реквизиты для оплаты в <b>{config['name']}</b> временно недоступны, вернитесь к оплате через 5 минут — мы эту проблему решаем. "
         f"Оплатите другим способом (CryptoBot или криптовалюта) 👇"
     )
     keyboard = InlineKeyboardMarkup(
