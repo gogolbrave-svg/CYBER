@@ -1930,7 +1930,7 @@ async def process_pay_crypto(callback: CallbackQuery, state: FSMContext):
   if not wallet:
     text = (
         "❌ <b>Реквизиты временно недоступны</b>\n\n"
-        "Сейчас реквизиты временно недоступны, вернитесь к оплате через 5 минут — мы эту проблему решаем. "
+        "Сейчас реквизиты временно недоступны, мы решаем эту проблему. "
         "Оплатите другим способом (CryptoBot или карта/валюта) 👇"
     )
     keyboard = InlineKeyboardMarkup(
