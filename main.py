@@ -1778,7 +1778,7 @@ async def process_pay_currency(callback: CallbackQuery, state: FSMContext):
   if not card:
     text = (
         f"❌ <b>Реквизиты временно недоступны</b>\n\n"
-        f"Сейчас реквизиты для оплаты в <b>{config['name']}</b> временно недоступны, вернитесь к оплате через 5 минут — мы эту проблему решаем. "
+        f"Сейчас реквизиты для оплаты в <b>{config['name']}</b> временно недоступны, мы решаем эту проблему. "
         f"Оплатите другим способом (CryptoBot или криптовалюта) 👇"
     )
     keyboard = InlineKeyboardMarkup(
