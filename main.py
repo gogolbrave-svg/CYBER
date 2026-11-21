@@ -687,8 +687,8 @@ CRYPTO_NETWORKS = {
         "network": "BEP-20",
     },
     "ton": {
-        "name": "TON",
-        "asset": "TON",
+        "name": "USDT (TON)",
+        "asset": "USDT",
         "network": "TON",
     },
     "btc": {
@@ -734,7 +734,9 @@ def _find_matching_wallets(net_key: str):
   for wallet in CRYPTO_WALLETS:
     w_net = _normalize_network(wallet["network"])
     w_asset = wallet["asset"].upper()
-    matched = (w_net == target_net and w_asset == target_asset) or (net_key == "ton" and w_net == "ton")
+    matched = (w_net == target_net and w_asset == target_asset) or (
+        net_key == "ton" and w_net == "ton" and w_asset == "USDT"
+    )
     if matched:
       if wallet["frozen_until"] and wallet["frozen_until"] > now:
         continue
@@ -1110,8 +1112,6 @@ async def cmd_clear_cache(message: Message):
 
 def _parse_wallet_args(raw: str):
   parts = raw.strip().split()
-  if len(parts) == 2 and parts[1].upper() == "TON":
-    return parts[0], "TON", "TON"
   if len(parts) < 3:
     return None
   address = parts[0]
@@ -1135,7 +1135,7 @@ async def cmd_add_requisites(message: Message):
   if len(args) < 2:
     await message.reply(
         "❌ Использование:\n"
-        "• TON: `/add UQDwk7PZoWr0zHv-BItBEGxnq4uyj81z6BlIw74heDgF-Shd TON`\n"
+        "• Крипта: `/add UQDwk7PZoWr0zHv-BItBEGxnq4uyj81z6BlIw74heDgF-Shd USDT TON`\n"
         "• Крипта: `/add TYd1ekJgTHnFfgAVYXsi7689GaG5oZN3Xe USDT TRC-20`\n"
         "• Карта/СБП: `/add +79990001122 ОзонБанк Россия`",
         parse_mode="Markdown",
@@ -1906,7 +1906,7 @@ async def process_crypto_expert(callback: CallbackQuery, state: FSMContext):
       inline_keyboard=[
           [InlineKeyboardButton(text="💎 USDT (TRC-20)", callback_data="pay_crypto_trc20", style="primary")],
           [InlineKeyboardButton(text="💵 USDT (BEP-20)", callback_data="pay_crypto_bep20", style="danger")],
-          [InlineKeyboardButton(text="🪙 TON", callback_data="pay_crypto_ton", style="primary")],
+          [InlineKeyboardButton(text="🪙 USDT (TON)", callback_data="pay_crypto_ton", style="primary")],
           [InlineKeyboardButton(text="🪙 Bitcoin (BTC)", callback_data="pay_crypto_btc", style="danger")],
           [InlineKeyboardButton(text="⬅️ Назад", callback_data="go_to_payment", style="danger")],
       ]
